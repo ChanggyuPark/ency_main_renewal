@@ -334,39 +334,39 @@ a{text-decoration:none}
 /* ════════════════════════════
    ④ GLOBAL PARTNERSHIP
 ════════════════════════════ */
-#partner{padding:64px 0;background:var(--navy);overflow:hidden}
+#partner{padding:64px 0;background:#fff;overflow:hidden}
 .partner-head{text-align:center;margin-bottom:32px}
-.partner-head .sec-label{justify-content:center;color:rgba(1,203,155,.8)}
-.partner-head .sec-label::before{background:rgba(1,203,155,.35)}
-.partner-head h2{font-size:clamp(20px,2.5vw,28px);font-weight:700;color:#fff;margin-bottom:8px}
-.partner-head p{font-size:14px;color:rgba(255,255,255,.45)}
+.partner-head .sec-label{justify-content:center}
+.partner-head .sec-label::before{background:var(--grad)}
+.partner-head h2{font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--navy);margin-bottom:8px}
+.partner-head p{font-size:14px;color:var(--gray)}
 
 /* 파트너 대표 이미지 — 한 줄 전체 */
 .partner-img-full{
   margin:0 var(--px) 28px;
   border-radius:14px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.1);
+  border:1px solid var(--border);
 }
-.partner-img-full img{width:100%;height:690px;object-fit:cover;object-position:center;display:block;opacity:.9}
+.partner-img-full img{width:100%;height:690px;object-fit:cover;object-position:center;display:block}
 
 /* 로고 텍스트 무한스크롤 */
 .track-wrap{overflow:hidden;position:relative}
 .track-wrap::before,.track-wrap::after{
   content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;
 }
-.track-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
-.track-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.track-wrap::before{left:0;background:linear-gradient(to right,#fff,transparent)}
+.track-wrap::after{right:0;background:linear-gradient(to left,#fff,transparent)}
 .track{display:flex;gap:12px;width:max-content}
 .logo-pill{
   height:52px;padding:0 20px;
-  border:1px solid rgba(255,255,255,.12);border-radius:8px;
+  border:1px solid var(--border);border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;color:rgba(255,255,255,.45);
-  letter-spacing:.05em;background:rgba(255,255,255,.04);
+  font-size:12px;font-weight:700;color:var(--gray);
+  letter-spacing:.05em;background:#fff;
   flex-shrink:0;white-space:nowrap;
-  transition:border-color .2s,color .2s;
+  transition:border-color .2s,color .2s,box-shadow .2s;
 }
-.logo-pill:hover{border-color:rgba(1,203,155,.4);color:rgba(255,255,255,.9)}
+.logo-pill:hover{border-color:rgba(1,203,155,.4);color:var(--navy);box-shadow:0 4px 14px rgba(26,43,78,.08)}
 
 /* ════════════════════════════
    RESPONSIVE
@@ -574,6 +574,26 @@ a{text-decoration:none}
         <div class="mc-logo"><img src="https://i.imgur.com/uhmGRTT.png" alt="두산공작기계" style="padding:8px"></div>
         <h4>두산공작기계</h4><p>DNM / PUMA / MX 시리즈</p>
         <div class="mc-tags"><span class="mt tok">밀링</span><span class="mt tok">선반</span><span class="mt tok">턴밀</span></div>
+      </div>
+      <div class="mc" data-milling="1" data-lathe="1" data-turnmill="1" data-robot="0">
+        <div class="mc-logo"><img src="https://i.imgur.com/N1bZXNm.png" alt="HWACHEON"></div>
+        <h4>HWACHEON</h4><p>Hi-TECH / MEGA 시리즈</p>
+        <div class="mc-tags"><span class="mt tok">밀링</span><span class="mt tok">선반</span><span class="mt tok">턴밀</span></div>
+      </div>
+      <div class="mc" data-milling="1" data-lathe="1" data-turnmill="0" data-robot="0">
+        <div class="mc-logo"><img src="https://i.imgur.com/GZOsL5O.png" alt="HANS"></div>
+        <h4>HANS</h4><p>HTC / HMC 시리즈</p>
+        <div class="mc-tags"><span class="mt tok">밀링</span><span class="mt tok">선반</span><span class="mt tna">턴밀</span></div>
+      </div>
+      <div class="mc" data-milling="1" data-lathe="1" data-turnmill="1" data-robot="0">
+        <div class="mc-logo"><img src="https://i.imgur.com/qOH4gzL.png" alt="현대위아"></div>
+        <h4>현대위아</h4><p>KBN / SKT / VX 시리즈</p>
+        <div class="mc-tags"><span class="mt tok">밀링</span><span class="mt tok">선반</span><span class="mt tok">턴밀</span></div>
+      </div>
+      <div class="mc" data-milling="1" data-lathe="1" data-turnmill="0" data-robot="0">
+        <div class="mc-logo"><img src="https://i.imgur.com/ucn1s3y.png" alt="스맥공작기계"></div>
+        <h4>스맥공작기계</h4><p>VM / SL 시리즈</p>
+        <div class="mc-tags"><span class="mt tok">밀링</span><span class="mt tok">선반</span><span class="mt tna">턴밀</span></div>
       </div>
       <div class="mc" data-milling="0" data-lathe="0" data-turnmill="0" data-robot="1">
         <div class="mc-logo" style="background:linear-gradient(135deg,rgba(1,203,155,.1),rgba(45,84,213,.1))">

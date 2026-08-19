@@ -398,9 +398,233 @@ a{text-decoration:none}
   .partner-img-full{margin:0 16px 20px}
   .partner-img-full img{max-height:100px}
 }
+
+/* ════════════════════════════
+   ① CUSTOMERS
+   - Google Sheet → Apps Script 연동
+   - 기존 섹션 스타일과 분리된 전용 클래스 사용
+════════════════════════════ */
+#ency-customers{
+  position:relative;
+  padding:76px 0 82px;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(1,203,155,.09),transparent 32%),
+    radial-gradient(circle at 92% 100%,rgba(45,84,213,.08),transparent 34%),
+    #f5f7fa;
+  overflow:hidden;
+}
+.ency-customers-wrap{
+  max-width:var(--w);
+  margin:0 auto;
+  padding:0 var(--px);
+  position:relative;
+  z-index:1;
+}
+.ency-customers-head{
+  text-align:center;
+  margin-bottom:42px;
+}
+.ency-customers-head h2{
+  font-size:clamp(26px,3vw,40px);
+  font-weight:700;
+  letter-spacing:-.03em;
+  line-height:1.2;
+  color:var(--navy);
+  margin-bottom:12px;
+}
+.ency-customers-grad{
+  background:var(--grad);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.ency-customers-head p{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.7;
+}
+.ency-customers-line{
+  width:38px;
+  height:3px;
+  border-radius:999px;
+  background:var(--grad);
+  margin:18px auto 0;
+}
+
+/* PC / Tablet 그리드 */
+.ency-customers-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:12px;
+}
+.ency-customer-card{
+  min-width:0;
+  height:104px;
+  border:1px solid rgba(26,43,78,.08);
+  border-radius:14px;
+  background:rgba(255,255,255,.68);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px 20px;
+  overflow:hidden;
+  user-select:none;
+  -webkit-user-select:none;
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+.ency-customer-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(1,203,155,.26);
+  background:rgba(255,255,255,.92);
+  box-shadow:0 9px 26px rgba(26,43,78,.07);
+}
+.ency-customer-visual{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+}
+.ency-customer-logo{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:48px;
+  object-fit:contain;
+  filter:grayscale(1);
+  opacity:.62;
+  transition:filter .25s ease,opacity .25s ease,transform .25s ease;
+  pointer-events:none;
+}
+.ency-customer-card:hover .ency-customer-logo{
+  filter:grayscale(0);
+  opacity:1;
+  transform:scale(1.025);
+}
+.ency-customer-name{
+  max-width:100%;
+  text-align:center;
+  color:#596579;
+  font-size:15px;
+  line-height:1.35;
+  font-weight:700;
+  letter-spacing:-.02em;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+  transition:color .2s ease;
+}
+.ency-customer-card.is-text:hover .ency-customer-name,
+.ency-customer-card.logo-failed:hover .ency-customer-name{
+  color:transparent;
+  background:var(--grad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.ency-customer-fallback{display:none}
+.ency-customer-card.logo-failed .ency-customer-logo{display:none}
+.ency-customer-card.logo-failed .ency-customer-fallback{display:block}
+
+/* 로딩 / 오류 */
+.ency-customers-status{
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  color:rgba(26,43,78,.5);
+  text-align:center;
+  padding:20px;
+}
+.ency-customers-status::before{
+  content:'';
+  width:7px;
+  height:7px;
+  margin-right:9px;
+  border-radius:50%;
+  background:var(--grad);
+  box-shadow:12px 0 0 rgba(45,84,213,.28);
+}
+
+/* 모바일 슬라이더 */
+.ency-customers-mobile{
+  display:none;
+  width:100%;
+  overflow:hidden;
+  touch-action:pan-y;
+  cursor:grab;
+}
+.ency-customers-mobile.is-dragging{cursor:grabbing}
+.ency-customers-track{
+  display:flex;
+  align-items:stretch;
+  gap:12px;
+  width:max-content;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1);
+}
+.ency-customers-mobile .ency-customer-card{
+  flex:0 0 clamp(132px,39vw,168px);
+  width:clamp(132px,39vw,168px);
+  height:92px;
+  padding:15px 16px;
+}
+.ency-customers-mobile .ency-customer-logo{max-height:42px}
+.ency-customers-mobile .ency-customer-name{font-size:14px}
+
+@media(max-width:980px){
+  .ency-customers-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .ency-customers-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:640px){
+  #ency-customers{padding:58px 0 62px}
+  .ency-customers-head{margin-bottom:30px}
+  .ency-customers-head h2{font-size:28px}
+  .ency-customers-head p{font-size:14px;padding:0 8px}
+  .ency-customers-grid{display:none}
+  .ency-customers-mobile{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  .ency-customer-card,
+  .ency-customer-logo,
+  .ency-customers-track{transition:none!important}
+}
+
 </style>
 </head>
 <body>
+
+
+<!-- ════ ① CUSTOMERS ════ -->
+<section id="ency-customers" aria-labelledby="ency-customers-title">
+  <div class="ency-customers-wrap">
+    <div class="ency-customers-head">
+      <h2 id="ency-customers-title"><span class="ency-customers-grad">ENCY</span>와 함께하는 기업</h2>
+      <p>다양한 산업과 제조 현장에서 ENCY 솔루션이 활용되고 있습니다.</p>
+      <div class="ency-customers-line" aria-hidden="true"></div>
+    </div>
+
+    <div id="encyCustomersStatus" class="ency-customers-status" role="status">
+      고객사 정보를 불러오는 중입니다.
+    </div>
+
+    <div id="encyCustomersGrid" class="ency-customers-grid" hidden></div>
+
+    <div id="encyCustomersMobile" class="ency-customers-mobile" hidden aria-label="ENCY 고객사">
+      <div id="encyCustomersTrack" class="ency-customers-track"></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ════ ② EDUCATION ════ -->
 <section id="edu">
@@ -821,5 +1045,300 @@ function postH(){
 window.addEventListener('load',postH);
 new ResizeObserver(postH).observe(document.body);
 </script>
+
+<script>
+/* ════════════════════════════
+   ① CUSTOMERS
+   Google Sheet → Apps Script(JSONP)
+   - 시트 수정 시 새로고침으로 최신 데이터 재호출
+   - 로고 URL 없음/로드 실패 시 고객사명 텍스트 표시
+   - 모바일: 자동 이동 + 좌우 스와이프 + 무한 반복
+════════════════════════════ */
+(function(){
+  'use strict';
+
+  const ENCY_CUSTOMERS_API =
+    'https://script.google.com/macros/s/AKfycby4tuytXtskWox5B--SvVlE-jxI3WK6YRIbeM69P4Ulmdf8MkU_JiRMNb_8b-CKntY/exec';
+
+  const grid = document.getElementById('encyCustomersGrid');
+  const mobile = document.getElementById('encyCustomersMobile');
+  const track = document.getElementById('encyCustomersTrack');
+  const status = document.getElementById('encyCustomersStatus');
+
+  if(!grid || !mobile || !track || !status) return;
+
+  let customers = [];
+  let currentIndex = 0;
+  let autoTimer = null;
+  let touchStartX = null;
+  let touchCurrentX = null;
+  let isPointerDown = false;
+  let resetTimer = null;
+
+  const AUTO_DELAY = 2800;
+  const SWIPE_THRESHOLD = 34;
+  const TRANSITION = 'transform .45s cubic-bezier(.22,.61,.36,1)';
+
+  function makeCard(customer){
+    const card = document.createElement('div');
+    card.className = 'ency-customer-card';
+    card.setAttribute('aria-label', customer.name);
+
+    const visual = document.createElement('div');
+    visual.className = 'ency-customer-visual';
+    card.appendChild(visual);
+
+    if(customer.logo){
+      const img = document.createElement('img');
+      img.className = 'ency-customer-logo';
+      img.src = customer.logo;
+      img.alt = customer.name;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.draggable = false;
+
+      const fallback = document.createElement('span');
+      fallback.className = 'ency-customer-name ency-customer-fallback';
+      fallback.textContent = customer.name;
+
+      img.addEventListener('error', function(){
+        card.classList.add('logo-failed');
+      }, {once:true});
+
+      visual.appendChild(img);
+      visual.appendChild(fallback);
+    }else{
+      card.classList.add('is-text');
+      const name = document.createElement('span');
+      name.className = 'ency-customer-name';
+      name.textContent = customer.name;
+      visual.appendChild(name);
+    }
+
+    return card;
+  }
+
+  function normalizeCustomers(list){
+    const seen = new Set();
+
+    return (Array.isArray(list) ? list : [])
+      .filter(item => item && String(item.name || '').trim())
+      .map(item => ({
+        order: Number(item.order) || 9999,
+        name: String(item.name || '').trim(),
+        logo: String(item.logo || '').trim()
+      }))
+      .sort((a,b) => a.order - b.order)
+      .filter(item => {
+        const key = item.name.replace(/\s+/g,'').toLowerCase();
+        if(seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+  }
+
+  function render(list){
+    customers = normalizeCustomers(list);
+
+    grid.innerHTML = '';
+    track.innerHTML = '';
+
+    if(!customers.length){
+      status.textContent = '현재 노출 중인 고객사가 없습니다.';
+      status.hidden = false;
+      grid.hidden = true;
+      mobile.hidden = true;
+      return;
+    }
+
+    customers.forEach(customer => {
+      grid.appendChild(makeCard(customer));
+    });
+
+    // 모바일 무한 루프를 위해 동일 목록을 2벌 배치
+    [...customers, ...customers].forEach(customer => {
+      track.appendChild(makeCard(customer));
+    });
+
+    status.hidden = true;
+    grid.hidden = false;
+    mobile.hidden = false;
+
+    currentIndex = 0;
+    setTrackPosition(false);
+    startAuto();
+  }
+
+  function getStep(){
+    const firstCard = track.querySelector('.ency-customer-card');
+    if(!firstCard) return 0;
+
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  function setTrackPosition(animate){
+    const step = getStep();
+    if(!step) return;
+
+    track.style.transition = animate ? TRANSITION : 'none';
+    track.style.transform = `translate3d(${-currentIndex * step}px,0,0)`;
+  }
+
+  function moveMobile(direction){
+    if(!customers.length || window.innerWidth > 640) return;
+
+    clearTimeout(resetTimer);
+
+    // 첫 카드에서 오른쪽으로 스와이프 시 두 번째 복제열의 동일 위치로 순간 이동 후 역방향 이동
+    if(direction < 0 && currentIndex === 0){
+      currentIndex = customers.length;
+      setTrackPosition(false);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          currentIndex -= 1;
+          setTrackPosition(true);
+        });
+      });
+      return;
+    }
+
+    currentIndex += direction;
+    setTrackPosition(true);
+
+    if(currentIndex >= customers.length){
+      resetTimer = setTimeout(() => {
+        currentIndex = currentIndex - customers.length;
+        setTrackPosition(false);
+      }, 470);
+    }
+  }
+
+  function startAuto(){
+    stopAuto();
+
+    if(
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      customers.length < 2
+    ) return;
+
+    autoTimer = setInterval(() => {
+      if(window.innerWidth <= 640 && !isPointerDown){
+        moveMobile(1);
+      }
+    }, AUTO_DELAY);
+  }
+
+  function stopAuto(){
+    if(autoTimer){
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  function onPointerDown(e){
+    if(window.innerWidth > 640) return;
+
+    isPointerDown = true;
+    touchStartX = e.clientX;
+    touchCurrentX = e.clientX;
+    mobile.classList.add('is-dragging');
+    stopAuto();
+
+    try{ mobile.setPointerCapture(e.pointerId); }catch(_){}
+  }
+
+  function onPointerMove(e){
+    if(!isPointerDown || touchStartX === null) return;
+    touchCurrentX = e.clientX;
+  }
+
+  function onPointerEnd(){
+    if(!isPointerDown) return;
+
+    const delta = (touchCurrentX ?? touchStartX) - touchStartX;
+
+    if(Math.abs(delta) >= SWIPE_THRESHOLD){
+      moveMobile(delta < 0 ? 1 : -1);
+    }
+
+    isPointerDown = false;
+    touchStartX = null;
+    touchCurrentX = null;
+    mobile.classList.remove('is-dragging');
+    startAuto();
+  }
+
+  mobile.addEventListener('pointerdown', onPointerDown);
+  mobile.addEventListener('pointermove', onPointerMove);
+  mobile.addEventListener('pointerup', onPointerEnd);
+  mobile.addEventListener('pointercancel', onPointerEnd);
+
+  window.addEventListener('resize', function(){
+    if(!customers.length) return;
+
+    if(window.innerWidth > 640){
+      currentIndex = 0;
+      setTrackPosition(false);
+    }else{
+      setTrackPosition(false);
+    }
+  });
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) stopAuto();
+    else startAuto();
+  });
+
+  function loadCustomers(){
+    const callbackName =
+      '__encyCustomers_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+
+    const script = document.createElement('script');
+    const timeout = setTimeout(() => {
+      cleanup();
+      status.textContent = '고객사 정보를 불러오지 못했습니다. 잠시 후 다시 확인해주세요.';
+    }, 12000);
+
+    function cleanup(){
+      clearTimeout(timeout);
+      if(script.parentNode) script.parentNode.removeChild(script);
+      try{ delete window[callbackName]; }
+      catch(_){ window[callbackName] = undefined; }
+    }
+
+    window[callbackName] = function(payload){
+      if(!payload || payload.success !== true){
+        cleanup();
+        status.textContent = '고객사 정보를 불러오지 못했습니다. 잠시 후 다시 확인해주세요.';
+        return;
+      }
+
+      render(payload.customers || []);
+      cleanup();
+    };
+
+    const qs = new URLSearchParams({
+      callback: callbackName,
+      _: String(Date.now())
+    });
+
+    script.src = ENCY_CUSTOMERS_API + '?' + qs.toString();
+    script.async = true;
+    script.onerror = function(){
+      cleanup();
+      status.textContent = '고객사 정보를 불러오지 못했습니다. 잠시 후 다시 확인해주세요.';
+    };
+
+    document.head.appendChild(script);
+  }
+
+  loadCustomers();
+})();
+</script>
+
 </body>
 </html>

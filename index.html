@@ -495,7 +495,7 @@ a{text-decoration:none}
   width:auto;
   max-width:100%;
   height:auto;
-  max-height:48px;
+  max-height:42px;
   object-fit:contain;
   filter:grayscale(1);
   opacity:.62;
@@ -532,6 +532,9 @@ a{text-decoration:none}
 .ency-customer-card.logo-failed .ency-customer-fallback{display:block}
 
 /* 로딩 / 오류 */
+.ency-customers-status[hidden]{
+  display:none!important;
+}
 .ency-customers-status{
   min-height:92px;
   display:flex;
@@ -576,7 +579,7 @@ a{text-decoration:none}
   height:92px;
   padding:15px 16px;
 }
-.ency-customers-mobile .ency-customer-logo{max-height:42px}
+.ency-customers-mobile .ency-customer-logo{max-height:38px}
 .ency-customers-mobile .ency-customer-name{font-size:14px}
 
 @media(max-width:980px){

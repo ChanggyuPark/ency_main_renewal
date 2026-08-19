@@ -555,6 +555,51 @@ a{text-decoration:none}
   box-shadow:12px 0 0 rgba(45,84,213,.28);
 }
 
+
+/* 고객사 적용사례 CTA */
+.ency-customers-cta{
+  display:flex;
+  justify-content:center;
+  margin-top:34px;
+}
+.ency-customers-cta a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:11px 22px;
+  border:1.5px solid rgba(26,43,78,.16);
+  border-radius:9px;
+  background:rgba(255,255,255,.72);
+  color:var(--navy);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:-.02em;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    color .2s ease,
+    background .2s ease;
+}
+.ency-customers-cta a::after{
+  content:'→';
+  font-size:15px;
+  line-height:1;
+  transition:transform .2s ease;
+}
+.ency-customers-cta a:hover{
+  transform:translateY(-1px);
+  border-color:rgba(1,203,155,.38);
+  background:#fff;
+  color:var(--blue);
+  box-shadow:0 7px 20px rgba(26,43,78,.07);
+}
+.ency-customers-cta a:hover::after{
+  transform:translateX(2px);
+}
+
 /* 모바일 슬라이더 */
 .ency-customers-mobile{
   display:none;
@@ -595,6 +640,7 @@ a{text-decoration:none}
   .ency-customers-head p{font-size:14px;padding:0 8px}
   .ency-customers-grid{display:none}
   .ency-customers-mobile{display:block}
+  .ency-customers-cta{margin-top:28px}
 }
 @media(prefers-reduced-motion:reduce){
   .ency-customer-card,
@@ -624,6 +670,12 @@ a{text-decoration:none}
 
     <div id="encyCustomersMobile" class="ency-customers-mobile" hidden aria-label="ENCY 고객사">
       <div id="encyCustomersTrack" class="ency-customers-track"></div>
+    </div>
+
+    <div class="ency-customers-cta">
+      <a href="https://www.encycadcam.co.kr/case-studies" target="_parent" aria-label="ENCY 적용사례 보러가기">
+        적용사례 보러가기
+      </a>
     </div>
   </div>
 </section>
